@@ -43,6 +43,11 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+// boolRef returns a reference to the bool argument.
+func boolRef(b bool) *bool {
+	return &b
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -86,8 +91,10 @@ func Provider() tfbridge.ProviderInfo {
 			// no additional points are required.
 			"endpoint":    {},
 			"client_cert": {},
-			"client_key":  {},
-			"ca":          {},
+			"client_key": {
+				Secret: boolRef(true),
+			},
+			"ca": {},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{

@@ -43,6 +43,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Endpoint == nil {
 		return nil, errors.New("invalid value for required argument 'Endpoint'")
 	}
+	if args.ClientKey != nil {
+		args.ClientKey = pulumi.ToSecret(args.ClientKey).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientKey",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:matchbox", name, args, &resource, opts...)

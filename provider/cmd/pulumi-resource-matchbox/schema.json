@@ -63,7 +63,8 @@
                 "type": "string"
             },
             "clientKey": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             },
             "endpoint": {
                 "type": "string"
@@ -86,7 +87,8 @@
                 "type": "string"
             },
             "clientKey": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             },
             "endpoint": {
                 "type": "string"
@@ -106,7 +108,8 @@
                 "type": "string"
             },
             "clientKey": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             },
             "endpoint": {
                 "type": "string"

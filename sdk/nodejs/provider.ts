@@ -55,10 +55,12 @@ export class Provider extends pulumi.ProviderResource {
             }
             resourceInputs["ca"] = args ? args.ca : undefined;
             resourceInputs["clientCert"] = args ? args.clientCert : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
+            resourceInputs["clientKey"] = args?.clientKey ? pulumi.secret(args.clientKey) : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

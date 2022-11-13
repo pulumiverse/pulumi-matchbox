@@ -50,6 +50,10 @@ namespace Pulumiverse.Matchbox
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse",
+                AdditionalSecretOutputs =
+                {
+                    "clientKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -67,7 +71,16 @@ namespace Pulumiverse.Matchbox
         public Input<string> ClientCert { get; set; } = null!;
 
         [Input("clientKey", required: true)]
-        public Input<string> ClientKey { get; set; } = null!;
+        private Input<string>? _clientKey;
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;

@@ -130,10 +130,12 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_cert"] = client_cert
             if client_key is None and not opts.urn:
                 raise TypeError("Missing required property 'client_key'")
-            __props__.__dict__["client_key"] = client_key
+            __props__.__dict__["client_key"] = None if client_key is None else pulumi.Output.secret(client_key)
             if endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint'")
             __props__.__dict__["endpoint"] = endpoint
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'matchbox',
             resource_name,
