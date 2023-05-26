@@ -43,7 +43,7 @@ db = matchbox.Group("example",
 ```go
 import (
 	"fmt"
-	matchbox "github.com/pulumiverse/pulumi-Matchbox/sdk/go/matchbox"
+	matchbox "github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

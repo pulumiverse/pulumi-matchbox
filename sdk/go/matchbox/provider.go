@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,7 +44,7 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Endpoint'")
 	}
 	if args.ClientKey != nil {
-		args.ClientKey = pulumi.ToSecret(args.ClientKey).(pulumi.StringOutput)
+		args.ClientKey = pulumi.ToSecret(args.ClientKey).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"clientKey",
