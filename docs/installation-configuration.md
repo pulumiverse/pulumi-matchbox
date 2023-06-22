@@ -1,7 +1,7 @@
 ---
 title: Matchbox Setup
 meta_desc: Information on how to install the Matchbox provider.
-layout: installation
+layout: package
 ---
 
 ## Installation
