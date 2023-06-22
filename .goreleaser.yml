@@ -3,7 +3,7 @@ archives:
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
 before:
   hooks:
-    - make tfgen
+    - make provider
 builds:
   - binary: pulumi-resource-matchbox
     dir: provider
