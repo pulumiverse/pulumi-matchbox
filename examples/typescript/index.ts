@@ -1,18 +1,3 @@
----
-title: Matchbox
-meta_desc: Provides an overview of the Matchbox Provider for Pulumi.
-layout: package
----
-
-The Matchbox provider for Pulumi can be used to provision the [Matchbox](https://matchbox.psdn.io) iPXE server.
-The Matchbox provider must be configured with certificates to connect correctly to the server.
-
-## Example
-
-{{< chooser language "typescript" >}}
-{{% choosable language typescript %}}
-
-```typescript
 import fs from 'fs';
 
 import * as pulumi from "@pulumi/pulumi"
@@ -58,8 +43,3 @@ const pxeGroup = new matchbox.Group("node1", {
         customVariable: "machine_specific_value_here"
     }
 })
-```
-
-{{% /choosable %}}
-
-{{< /chooser >}}
