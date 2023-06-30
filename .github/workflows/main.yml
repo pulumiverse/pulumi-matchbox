@@ -17,13 +17,13 @@ jobs:
       pull-requests: write
     uses: pulumiverse/infra/.github/workflows/provider-prerequisites.yaml@365de76f299cfda6722bc49feb7020a534fbf8db # tag=actions-workflow-v0.0.3
     with:
-      provider: unifi
+      provider: matchbox
       goversion: "1.19.x"
   build:
     needs: prerequisites
     uses: pulumiverse/infra/.github/workflows/provider-build-sdk.yaml@365de76f299cfda6722bc49feb7020a534fbf8db # tag=actions-workflow-v0.0.3
     with:
-      provider: unifi
+      provider: matchbox
       goversion: "1.19.x"
       pythonversion: "3.9"
       nodeversion: "16.x"
