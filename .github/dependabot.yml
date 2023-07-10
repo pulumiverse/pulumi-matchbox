@@ -5,6 +5,8 @@ updates:
   schedule:
     interval: monthly
   open-pull-requests-limit: 3
+  ignore:
+    - dependency-name: "github.com/pulumi/pulumi/sdk/*"
   reviewers:
   - ringods
 - package-ecosystem: gomod
