@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox/internal"
 )
 
 // ## # Group Resource
@@ -67,7 +68,7 @@ func NewGroup(ctx *pulumi.Context,
 	if args.Profile == nil {
 		return nil, errors.New("invalid value for required argument 'Profile'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("matchbox:index/group:Group", name, args, &resource, opts...)
 	if err != nil {

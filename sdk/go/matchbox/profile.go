@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox/internal"
 )
 
 type Profile struct {
@@ -34,7 +35,7 @@ func NewProfile(ctx *pulumi.Context,
 		args = &ProfileArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Profile
 	err := ctx.RegisterResource("matchbox:index/profile:Profile", name, args, &resource, opts...)
 	if err != nil {

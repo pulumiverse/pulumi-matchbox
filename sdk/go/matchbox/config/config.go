@@ -6,7 +6,10 @@ package config
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+	"github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 func GetCa(ctx *pulumi.Context) string {
 	return config.Get(ctx, "matchbox:ca")

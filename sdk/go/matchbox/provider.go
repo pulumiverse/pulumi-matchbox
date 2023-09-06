@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox/internal"
 )
 
 // The provider type for the matchbox package. By default, resources use package-wide configuration
@@ -50,7 +51,7 @@ func NewProvider(ctx *pulumi.Context,
 		"clientKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:matchbox", name, args, &resource, opts...)
 	if err != nil {
