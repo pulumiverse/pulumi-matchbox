@@ -1,0 +1,4 @@
+template: bridged
+provider: matchbox
+upstream-provider-org: poseidon
+lint: false
