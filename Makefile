@@ -1,6 +1,6 @@
 PROJECT_NAME := matchbox Package
 
-SHELL            := /bin/bash
+SHELL            := /usr/bin/env bash
 PACK             := matchbox
 ORG              := pulumiverse
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
