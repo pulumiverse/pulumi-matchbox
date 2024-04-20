@@ -19,7 +19,7 @@ See [examples](./examples) for Pulumi configs which PXE boot, install CoreOS, an
 ## Requirements
 
 * Pulumi v3 [installed](https://www.pulumi.com/docs/get-started/)
-* Matchbox v0.8+ [installed](https://matchbox.psdn.io/deployment/)
+* Matchbox v0.10+ [installed](https://matchbox.psdn.io/deployment/)
 * Matchbox credentials `client.crt`, `client.key`, `ca.crt`
 
 ### Node.js (JavaScript/TypeScript)
