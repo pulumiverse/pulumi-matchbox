@@ -1,6 +1,6 @@
 module github.com/pulumiverse/pulumi-matchbox/sdk
 
-go 1.20
+go 1.21
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
