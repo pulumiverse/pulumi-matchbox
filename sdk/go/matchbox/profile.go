@@ -11,6 +11,9 @@ import (
 	"github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox/internal"
 )
 
+// ## # Profile Resource
+//
+// A Profile defines network boot and declarative provisioning configurations.
 type Profile struct {
 	pulumi.CustomResourceState
 

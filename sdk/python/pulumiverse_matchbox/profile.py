@@ -249,7 +249,10 @@ class Profile(pulumi.CustomResource):
                  raw_ignition: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Profile resource with the given unique name, props, and options.
+        ## # Profile Resource
+
+        A Profile defines network boot and declarative provisioning configurations.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of kernel arguments
@@ -265,7 +268,10 @@ class Profile(pulumi.CustomResource):
                  args: Optional[ProfileArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Profile resource with the given unique name, props, and options.
+        ## # Profile Resource
+
+        A Profile defines network boot and declarative provisioning configurations.
+
         :param str resource_name: The name of the resource.
         :param ProfileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

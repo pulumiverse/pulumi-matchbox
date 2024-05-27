@@ -169,20 +169,6 @@ class Group(pulumi.CustomResource):
 
         A Group matches (one or more) machines and declares a machine should be boot with a named `profile`.
 
-        ```python
-        import pulumi
-        import pulumiverse_matchbox as matchbox
-
-        node1 = matchbox.Group("node1",
-            metadata={
-                "custom_variable": "machine_specific_value_here",
-            },
-            profile=matchbox_profile["myprofile"]["name"],
-            selector={
-                "mac": "52:54:00:a1:9c:ae",
-            })
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] metadata: Map of group metadata (optional, seldom used)
@@ -200,20 +186,6 @@ class Group(pulumi.CustomResource):
         ## # Group Resource
 
         A Group matches (one or more) machines and declares a machine should be boot with a named `profile`.
-
-        ```python
-        import pulumi
-        import pulumiverse_matchbox as matchbox
-
-        node1 = matchbox.Group("node1",
-            metadata={
-                "custom_variable": "machine_specific_value_here",
-            },
-            profile=matchbox_profile["myprofile"]["name"],
-            selector={
-                "mac": "52:54:00:a1:9c:ae",
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

@@ -10,6 +10,11 @@ using Pulumi;
 
 namespace Pulumiverse.Matchbox
 {
+    /// <summary>
+    /// ## # Profile Resource
+    /// 
+    /// A Profile defines network boot and declarative provisioning configurations.
+    /// </summary>
     [MatchboxResourceType("matchbox:index/profile:Profile")]
     public partial class Profile : global::Pulumi.CustomResource
     {
