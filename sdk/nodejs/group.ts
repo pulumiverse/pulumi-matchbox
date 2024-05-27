@@ -8,21 +8,6 @@ import * as utilities from "./utilities";
  * ## # Group Resource
  *
  * A Group matches (one or more) machines and declares a machine should be boot with a named `profile`.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as matchbox from "@pulumiverse/matchbox";
- *
- * const node1 = new matchbox.Group("node1", {
- *     metadata: {
- *         custom_variable: "machine_specific_value_here",
- *     },
- *     profile: matchbox_profile.myprofile.name,
- *     selector: {
- *         mac: "52:54:00:a1:9c:ae",
- *     },
- * });
- * ```
  */
 export class Group extends pulumi.CustomResource {
     /**
