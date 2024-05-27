@@ -2,12 +2,12 @@ module github.com/pulumiverse/pulumi-matchbox/provider
 
 go 1.21
 
-toolchain go1.21.10
+toolchain go1.22.3
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
-	github.com/poseidon/terraform-provider-matchbox v0.5.2
+	github.com/poseidon/terraform-provider-matchbox v0.5.4
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.83.0
 	github.com/pulumi/pulumi/sdk/v3 v3.116.1
 )
@@ -171,7 +171,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/poseidon/matchbox v0.9.0 // indirect
+	github.com/poseidon/matchbox v0.11.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.6.2 // indirect
@@ -195,7 +195,7 @@ require (
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/pflag v1.0.6-0.20210604193023-d5e0c0615ace // indirect
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
