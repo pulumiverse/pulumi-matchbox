@@ -33,6 +33,14 @@ env:
   PYPI_USERNAME: "__token__"
   PYPI_REPOSITORY_URL: ""
   PUBLISH_PYPI: true
+  DOTNETVERSION: |
+      6.0.x
+      3.1.301
+  GOVERSION: 1.22.x
+  GRADLEVERSION: "7.6"
+  JAVAVERSION: "11"
+  NODEVERSION: 20.x
+  PYTHONVERSION: 3.11.8
 
 jobs:
   publish_binary:
@@ -49,7 +57,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v4
       with:
-        go-version: ${{matrix.goversion}}
+        go-version: ${{ env.GOVERSION }}
 
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.10.0
@@ -66,9 +74,6 @@ jobs:
 
     strategy:
       fail-fast: true
-      matrix:
-        goversion:
-        - 1.20.x
 
   publish_sdk:
     name: Publish SDKs
@@ -83,7 +88,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v4
         with:
-          go-version: ${{ matrix.goversion }}
+          go-version: ${{ env.GOVERSION }}
 
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.10.0
@@ -97,14 +102,14 @@ jobs:
         name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{matrix.nodeversion}}
+          node-version: ${{ env.NODEVERSION }}
           registry-url: ${{env.NPM_REGISTRY_URL}}
 
       - if: ${{ matrix.language == 'dotnet'}}
         name: Setup DotNet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: ${{matrix.dotnetversion}}
+          dotnet-version: ${{ env.DOTNETVERSION }}
 
       - if: ${{ matrix.language == 'java'}}
         name: Setup Java
@@ -112,13 +117,13 @@ jobs:
         with:
           cache: gradle
           distribution: temurin
-          java-version: ${{matrix.javaversion}}
+          java-version: ${{ env.JAVAVERSION }}
 
       - if: ${{ matrix.language == 'python'}}
         name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{matrix.pythonversion}}
+          python-version: ${{ env.PYTHONVERSION }}
 
       - name: Build SDK
         run: make build_${{ matrix.language }}
@@ -157,19 +162,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        dotnetversion:
-          - 6.0.x
-        goversion:
-          - 1.20.x
-        nodeversion:
-          - 16.x
-        pythonversion:
-          - "3.9"
-        # javaversion:
-        # - "11"
         language:
           - nodejs
           - python
           - dotnet
           - go
-          # - java
