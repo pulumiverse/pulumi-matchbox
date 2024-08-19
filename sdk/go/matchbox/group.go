@@ -19,13 +19,13 @@ type Group struct {
 	pulumi.CustomResourceState
 
 	// Map of group metadata (optional, seldom used)
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Unqiue name for the machine matcher
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of a Matchbox profile
 	Profile pulumi.StringOutput `pulumi:"profile"`
 	// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
-	Selector pulumi.MapOutput `pulumi:"selector"`
+	Selector pulumi.StringMapOutput `pulumi:"selector"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -62,24 +62,24 @@ func GetGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
 	// Map of group metadata (optional, seldom used)
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// Unqiue name for the machine matcher
 	Name *string `pulumi:"name"`
 	// Name of a Matchbox profile
 	Profile *string `pulumi:"profile"`
 	// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
-	Selector map[string]interface{} `pulumi:"selector"`
+	Selector map[string]string `pulumi:"selector"`
 }
 
 type GroupState struct {
 	// Map of group metadata (optional, seldom used)
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// Unqiue name for the machine matcher
 	Name pulumi.StringPtrInput
 	// Name of a Matchbox profile
 	Profile pulumi.StringPtrInput
 	// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
-	Selector pulumi.MapInput
+	Selector pulumi.StringMapInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -88,25 +88,25 @@ func (GroupState) ElementType() reflect.Type {
 
 type groupArgs struct {
 	// Map of group metadata (optional, seldom used)
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// Unqiue name for the machine matcher
 	Name *string `pulumi:"name"`
 	// Name of a Matchbox profile
 	Profile string `pulumi:"profile"`
 	// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
-	Selector map[string]interface{} `pulumi:"selector"`
+	Selector map[string]string `pulumi:"selector"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
 	// Map of group metadata (optional, seldom used)
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// Unqiue name for the machine matcher
 	Name pulumi.StringPtrInput
 	// Name of a Matchbox profile
 	Profile pulumi.StringInput
 	// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
-	Selector pulumi.MapInput
+	Selector pulumi.StringMapInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -197,8 +197,8 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 }
 
 // Map of group metadata (optional, seldom used)
-func (o GroupOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Group) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o GroupOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // Unqiue name for the machine matcher
@@ -212,8 +212,8 @@ func (o GroupOutput) Profile() pulumi.StringOutput {
 }
 
 // Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
-func (o GroupOutput) Selector() pulumi.MapOutput {
-	return o.ApplyT(func(v *Group) pulumi.MapOutput { return v.Selector }).(pulumi.MapOutput)
+func (o GroupOutput) Selector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Selector }).(pulumi.StringMapOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

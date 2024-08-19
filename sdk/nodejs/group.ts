@@ -40,7 +40,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Map of group metadata (optional, seldom used)
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Unqiue name for the machine matcher
      */
@@ -52,7 +52,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
      */
-    public readonly selector!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly selector!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -93,7 +93,7 @@ export interface GroupState {
     /**
      * Map of group metadata (optional, seldom used)
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unqiue name for the machine matcher
      */
@@ -105,7 +105,7 @@ export interface GroupState {
     /**
      * Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
      */
-    selector?: pulumi.Input<{[key: string]: any}>;
+    selector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -115,7 +115,7 @@ export interface GroupArgs {
     /**
      * Map of group metadata (optional, seldom used)
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unqiue name for the machine matcher
      */
@@ -127,5 +127,5 @@ export interface GroupArgs {
     /**
      * Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
      */
-    selector?: pulumi.Input<{[key: string]: any}>;
+    selector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

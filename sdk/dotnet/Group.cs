@@ -22,7 +22,7 @@ namespace Pulumiverse.Matchbox
         /// Map of group metadata (optional, seldom used)
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Unqiue name for the machine matcher
@@ -40,7 +40,7 @@ namespace Pulumiverse.Matchbox
         /// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         /// </summary>
         [Output("selector")]
-        public Output<ImmutableDictionary<string, object>?> Selector { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Selector { get; private set; } = null!;
 
 
         /// <summary>
@@ -90,14 +90,14 @@ namespace Pulumiverse.Matchbox
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Map of group metadata (optional, seldom used)
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -114,14 +114,14 @@ namespace Pulumiverse.Matchbox
         public Input<string> Profile { get; set; } = null!;
 
         [Input("selector")]
-        private InputMap<object>? _selector;
+        private InputMap<string>? _selector;
 
         /// <summary>
         /// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         /// </summary>
-        public InputMap<object> Selector
+        public InputMap<string> Selector
         {
-            get => _selector ?? (_selector = new InputMap<object>());
+            get => _selector ?? (_selector = new InputMap<string>());
             set => _selector = value;
         }
 
@@ -134,14 +134,14 @@ namespace Pulumiverse.Matchbox
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Map of group metadata (optional, seldom used)
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -158,14 +158,14 @@ namespace Pulumiverse.Matchbox
         public Input<string>? Profile { get; set; }
 
         [Input("selector")]
-        private InputMap<object>? _selector;
+        private InputMap<string>? _selector;
 
         /// <summary>
         /// Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         /// </summary>
-        public InputMap<object> Selector
+        public InputMap<string> Selector
         {
-            get => _selector ?? (_selector = new InputMap<object>());
+            get => _selector ?? (_selector = new InputMap<string>());
             set => _selector = value;
         }
 
