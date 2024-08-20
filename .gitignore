@@ -23,4 +23,4 @@ provider/**/schema-embed.json
 **/dist
 server
 
-go.work.sum
+go.work*
