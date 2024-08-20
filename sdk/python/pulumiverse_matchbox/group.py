@@ -15,15 +15,15 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  profile: pulumi.Input[str],
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] profile: Name of a Matchbox profile
-        :param pulumi.Input[Mapping[str, Any]] metadata: Map of group metadata (optional, seldom used)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Map of group metadata (optional, seldom used)
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
-        :param pulumi.Input[Mapping[str, Any]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """
         pulumi.set(__self__, "profile", profile)
         if metadata is not None:
@@ -47,14 +47,14 @@ class GroupArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of group metadata (optional, seldom used)
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -71,30 +71,30 @@ class GroupArgs:
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "selector", value)
 
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Map of group metadata (optional, seldom used)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Map of group metadata (optional, seldom used)
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
         :param pulumi.Input[str] profile: Name of a Matchbox profile
-        :param pulumi.Input[Mapping[str, Any]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
@@ -107,14 +107,14 @@ class _GroupState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of group metadata (optional, seldom used)
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -143,14 +143,14 @@ class _GroupState:
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def selector(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "selector", value)
 
 
@@ -159,10 +159,10 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## # Group Resource
@@ -171,10 +171,10 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Map of group metadata (optional, seldom used)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Map of group metadata (optional, seldom used)
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
         :param pulumi.Input[str] profile: Name of a Matchbox profile
-        :param pulumi.Input[Mapping[str, Any]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """
         ...
     @overload
@@ -202,10 +202,10 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -231,10 +231,10 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             profile: Optional[pulumi.Input[str]] = None,
-            selector: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Group':
+            selector: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -242,10 +242,10 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Map of group metadata (optional, seldom used)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Map of group metadata (optional, seldom used)
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
         :param pulumi.Input[str] profile: Name of a Matchbox profile
-        :param pulumi.Input[Mapping[str, Any]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] selector: Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -259,7 +259,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of group metadata (optional, seldom used)
         """
@@ -283,7 +283,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def selector(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def selector(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.
         """

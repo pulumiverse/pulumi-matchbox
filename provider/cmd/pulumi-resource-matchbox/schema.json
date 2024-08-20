@@ -128,7 +128,7 @@
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map of group metadata (optional, seldom used)\n"
                 },
@@ -143,7 +143,7 @@
                 "selector": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.\n"
                 }
@@ -156,7 +156,7 @@
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map of group metadata (optional, seldom used)\n",
                     "willReplaceOnChanges": true
@@ -174,7 +174,7 @@
                 "selector": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.\n",
                     "willReplaceOnChanges": true
@@ -189,7 +189,7 @@
                     "metadata": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Map of group metadata (optional, seldom used)\n",
                         "willReplaceOnChanges": true
@@ -207,7 +207,7 @@
                     "selector": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Map of hardware machine selectors. See [reserved selectors](https://matchbox.psdn.io/matchbox/#reserved-selectors). An empty selector becomes a global default group that matches machines.\n",
                         "willReplaceOnChanges": true
