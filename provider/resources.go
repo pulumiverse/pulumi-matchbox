@@ -138,6 +138,7 @@ func Provider() tfbridge.ProviderInfo {
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
 			PackageName:          "pulumiverse_matchbox",
+			PyProject:            struct{ Enabled bool }{true},
 			RespectSchemaVersion: true,
 		},
 		Golang: &tfbridge.GolangInfo{
