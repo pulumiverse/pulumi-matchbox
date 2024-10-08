@@ -20,6 +20,7 @@ import (
 	_ "embed"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+
 	matchbox "github.com/pulumiverse/pulumi-matchbox/provider"
 	"github.com/pulumiverse/pulumi-matchbox/provider/pkg/version"
 )
