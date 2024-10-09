@@ -2,23 +2,23 @@
 name: Upgrade provider
 
 on:
-  issues:
-    types:
-    - opened
   workflow_dispatch: {}
+  schedule:
+    # At 05:00 on Monday
+    - cron: 0 5 * * 1
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
   upgrade_provider:
-    if: ${{ (github.event.issue.user.login == 'github-actions' && contains(github.event.issue.title, 'Upgrade terraform-provider-')) || github.event_name == 'workflow_dispatch' }}
     name: upgrade-provider
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
