@@ -20,7 +20,8 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
-    - run: curl https://api.github.com/rate_limit
+    - run: |
+        curl --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit
       shell: bash
     - name: Checkout Repo
       uses: actions/checkout@v4
@@ -44,6 +45,7 @@ jobs:
       env:
         REPO: ${{ github.repository }}
       shell: bash
-    - run: curl https://api.github.com/rate_limit
+    - run: |
+        curl --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/rate_limit
       if: always()
       shell: bash
