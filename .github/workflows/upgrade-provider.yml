@@ -32,8 +32,8 @@ jobs:
         shell: bash
       - name: "Set up git identity: name"
         run: |
-          git config --global user.name 'bot@pulumi.com'
-          git config --global user.email 'bot@pulumi.com'
+          git config --global user.name 'Github Actions'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
         shell: bash
       - name: Run upgrade-provider
         run: upgrade-provider "${{ github.repository }}" --kind="all" 

@@ -3,5 +3,4 @@
 ---
 upstream-provider-name: terraform-provider-matchbox
 upstream-provider-org: poseidon
-pulumi-infer-version: false
 remove-plugins: true
