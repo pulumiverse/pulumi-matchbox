@@ -20,6 +20,8 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
+    - run: curl https://api.github.com/rate_limit
+      shell: bash
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Setup tools
@@ -41,4 +43,7 @@ jobs:
         upgrade-provider "$REPO" --kind=check-upstream-version
       env:
         REPO: ${{ github.repository }}
+      shell: bash
+    - run: curl https://api.github.com/rate_limit
+      if: always()
       shell: bash
