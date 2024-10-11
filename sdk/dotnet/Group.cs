@@ -14,6 +14,30 @@ namespace Pulumiverse.Matchbox
     /// ## # Group Resource
     /// 
     /// A Group matches (one or more) machines and declares a machine should be boot with a named `profile`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Matchbox = Pulumiverse.Matchbox;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var node1 = new Matchbox.Group("node1", new()
+    ///     {
+    ///         Metadata = 
+    ///         {
+    ///             { "custom_variable", "machine_specific_value_here" },
+    ///         },
+    ///         Profile = matchbox_profile.Myprofile.Name,
+    ///         Selector = 
+    ///         {
+    ///             { "mac", "52:54:00:a1:9c:ae" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [MatchboxResourceType("matchbox:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
