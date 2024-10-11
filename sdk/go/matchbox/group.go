@@ -15,6 +15,36 @@ import (
 // ## # Group Resource
 //
 // A Group matches (one or more) machines and declares a machine should be boot with a named `profile`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-matchbox/sdk/go/matchbox"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := matchbox.NewGroup(ctx, "node1", &matchbox.GroupArgs{
+//				Metadata: pulumi.StringMap{
+//					"custom_variable": pulumi.String("machine_specific_value_here"),
+//				},
+//				Profile: pulumi.Any(matchbox_profile.Myprofile.Name),
+//				Selector: pulumi.StringMap{
+//					"mac": pulumi.String("52:54:00:a1:9c:ae"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Group struct {
 	pulumi.CustomResourceState
 

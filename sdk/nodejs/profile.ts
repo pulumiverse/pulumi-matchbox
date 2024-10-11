@@ -8,6 +8,16 @@ import * as utilities from "./utilities";
  * ## # Profile Resource
  *
  * A Profile defines network boot and declarative provisioning configurations.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const config = new pulumi.Config();
+ * const osStream = config.get("osStream") || "stable";
+ * const osVersion = config.require("osVersion");
+ * const kernel = `https://builds.coreos.fedoraproject.org/prod/streams/${osStream}/builds/${osVersion}/x86_64/fedora-coreos-${osVersion}-live-kernel-x86_64`;
+ * const initrd = `https://builds.coreos.fedoraproject.org/prod/streams/${osStream}/builds/${osVersion}/x86_64/fedora-coreos-${osVersion}-live-initramfs.x86_64.img`;
+ * ```
  */
 export class Profile extends pulumi.CustomResource {
     /**
@@ -45,6 +55,9 @@ export class Profile extends pulumi.CustomResource {
      * CoreOS Container Linux Config (CLC) (for backwards compatibility)
      */
     public readonly containerLinuxConfig!: pulumi.Output<string | undefined>;
+    /**
+     * Generic configuration
+     */
     public readonly genericConfig!: pulumi.Output<string | undefined>;
     /**
      * List of URLs to init RAM filesystems
@@ -107,6 +120,9 @@ export interface ProfileState {
      * CoreOS Container Linux Config (CLC) (for backwards compatibility)
      */
     containerLinuxConfig?: pulumi.Input<string>;
+    /**
+     * Generic configuration
+     */
     genericConfig?: pulumi.Input<string>;
     /**
      * List of URLs to init RAM filesystems
@@ -135,6 +151,9 @@ export interface ProfileArgs {
      * CoreOS Container Linux Config (CLC) (for backwards compatibility)
      */
     containerLinuxConfig?: pulumi.Input<string>;
+    /**
+     * Generic configuration
+     */
     genericConfig?: pulumi.Input<string>;
     /**
      * List of URLs to init RAM filesystems

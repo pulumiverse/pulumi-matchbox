@@ -14,6 +14,23 @@ namespace Pulumiverse.Matchbox
     /// ## # Profile Resource
     /// 
     /// A Profile defines network boot and declarative provisioning configurations.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var osStream = config.Get("osStream") ?? "stable";
+    ///     var osVersion = config.Require("osVersion");
+    ///     var kernel = $"https://builds.coreos.fedoraproject.org/prod/streams/{osStream}/builds/{osVersion}/x86_64/fedora-coreos-{osVersion}-live-kernel-x86_64";
+    /// 
+    ///     var initrd = $"https://builds.coreos.fedoraproject.org/prod/streams/{osStream}/builds/{osVersion}/x86_64/fedora-coreos-{osVersion}-live-initramfs.x86_64.img";
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [MatchboxResourceType("matchbox:index/profile:Profile")]
     public partial class Profile : global::Pulumi.CustomResource
@@ -30,6 +47,9 @@ namespace Pulumiverse.Matchbox
         [Output("containerLinuxConfig")]
         public Output<string?> ContainerLinuxConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Generic configuration
+        /// </summary>
         [Output("genericConfig")]
         public Output<string?> GenericConfig { get; private set; } = null!;
 
@@ -119,6 +139,9 @@ namespace Pulumiverse.Matchbox
         [Input("containerLinuxConfig")]
         public Input<string>? ContainerLinuxConfig { get; set; }
 
+        /// <summary>
+        /// Generic configuration
+        /// </summary>
         [Input("genericConfig")]
         public Input<string>? GenericConfig { get; set; }
 
@@ -175,6 +198,9 @@ namespace Pulumiverse.Matchbox
         [Input("containerLinuxConfig")]
         public Input<string>? ContainerLinuxConfig { get; set; }
 
+        /// <summary>
+        /// Generic configuration
+        /// </summary>
         [Input("genericConfig")]
         public Input<string>? GenericConfig { get; set; }
 

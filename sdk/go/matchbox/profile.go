@@ -14,6 +14,34 @@ import (
 // ## # Profile Resource
 //
 // A Profile defines network boot and declarative provisioning configurations.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			osStream := "stable"
+//			if param := cfg.Get("osStream"); param != "" {
+//				osStream = param
+//			}
+//			osVersion := cfg.Require("osVersion")
+//			_ := fmt.Sprintf("https://builds.coreos.fedoraproject.org/prod/streams/%v/builds/%v/x86_64/fedora-coreos-%v-live-kernel-x86_64", osStream, osVersion, osVersion)
+//			_ := fmt.Sprintf("https://builds.coreos.fedoraproject.org/prod/streams/%v/builds/%v/x86_64/fedora-coreos-%v-live-initramfs.x86_64.img", osStream, osVersion, osVersion)
+//			return nil
+//		})
+//	}
+//
+// ```
 type Profile struct {
 	pulumi.CustomResourceState
 
@@ -21,7 +49,8 @@ type Profile struct {
 	Args pulumi.StringArrayOutput `pulumi:"args"`
 	// CoreOS Container Linux Config (CLC) (for backwards compatibility)
 	ContainerLinuxConfig pulumi.StringPtrOutput `pulumi:"containerLinuxConfig"`
-	GenericConfig        pulumi.StringPtrOutput `pulumi:"genericConfig"`
+	// Generic configuration
+	GenericConfig pulumi.StringPtrOutput `pulumi:"genericConfig"`
 	// List of URLs to init RAM filesystems
 	Initrds pulumi.StringArrayOutput `pulumi:"initrds"`
 	// URL of the kernel image to boot
@@ -65,7 +94,8 @@ type profileState struct {
 	Args []string `pulumi:"args"`
 	// CoreOS Container Linux Config (CLC) (for backwards compatibility)
 	ContainerLinuxConfig *string `pulumi:"containerLinuxConfig"`
-	GenericConfig        *string `pulumi:"genericConfig"`
+	// Generic configuration
+	GenericConfig *string `pulumi:"genericConfig"`
 	// List of URLs to init RAM filesystems
 	Initrds []string `pulumi:"initrds"`
 	// URL of the kernel image to boot
@@ -80,7 +110,8 @@ type ProfileState struct {
 	Args pulumi.StringArrayInput
 	// CoreOS Container Linux Config (CLC) (for backwards compatibility)
 	ContainerLinuxConfig pulumi.StringPtrInput
-	GenericConfig        pulumi.StringPtrInput
+	// Generic configuration
+	GenericConfig pulumi.StringPtrInput
 	// List of URLs to init RAM filesystems
 	Initrds pulumi.StringArrayInput
 	// URL of the kernel image to boot
@@ -99,7 +130,8 @@ type profileArgs struct {
 	Args []string `pulumi:"args"`
 	// CoreOS Container Linux Config (CLC) (for backwards compatibility)
 	ContainerLinuxConfig *string `pulumi:"containerLinuxConfig"`
-	GenericConfig        *string `pulumi:"genericConfig"`
+	// Generic configuration
+	GenericConfig *string `pulumi:"genericConfig"`
 	// List of URLs to init RAM filesystems
 	Initrds []string `pulumi:"initrds"`
 	// URL of the kernel image to boot
@@ -115,7 +147,8 @@ type ProfileArgs struct {
 	Args pulumi.StringArrayInput
 	// CoreOS Container Linux Config (CLC) (for backwards compatibility)
 	ContainerLinuxConfig pulumi.StringPtrInput
-	GenericConfig        pulumi.StringPtrInput
+	// Generic configuration
+	GenericConfig pulumi.StringPtrInput
 	// List of URLs to init RAM filesystems
 	Initrds pulumi.StringArrayInput
 	// URL of the kernel image to boot
@@ -222,6 +255,7 @@ func (o ProfileOutput) ContainerLinuxConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringPtrOutput { return v.ContainerLinuxConfig }).(pulumi.StringPtrOutput)
 }
 
+// Generic configuration
 func (o ProfileOutput) GenericConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringPtrOutput { return v.GenericConfig }).(pulumi.StringPtrOutput)
 }

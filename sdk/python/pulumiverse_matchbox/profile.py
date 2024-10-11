@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ProfileArgs', 'Profile']
@@ -25,6 +30,7 @@ class ProfileArgs:
         The set of arguments for constructing a Profile resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of kernel arguments
         :param pulumi.Input[str] container_linux_config: CoreOS Container Linux Config (CLC) (for backwards compatibility)
+        :param pulumi.Input[str] generic_config: Generic configuration
         :param pulumi.Input[Sequence[pulumi.Input[str]]] initrds: List of URLs to init RAM filesystems
         :param pulumi.Input[str] kernel: URL of the kernel image to boot
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
@@ -71,6 +77,9 @@ class ProfileArgs:
     @property
     @pulumi.getter(name="genericConfig")
     def generic_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Generic configuration
+        """
         return pulumi.get(self, "generic_config")
 
     @generic_config.setter
@@ -137,6 +146,7 @@ class _ProfileState:
         Input properties used for looking up and filtering Profile resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of kernel arguments
         :param pulumi.Input[str] container_linux_config: CoreOS Container Linux Config (CLC) (for backwards compatibility)
+        :param pulumi.Input[str] generic_config: Generic configuration
         :param pulumi.Input[Sequence[pulumi.Input[str]]] initrds: List of URLs to init RAM filesystems
         :param pulumi.Input[str] kernel: URL of the kernel image to boot
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
@@ -183,6 +193,9 @@ class _ProfileState:
     @property
     @pulumi.getter(name="genericConfig")
     def generic_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Generic configuration
+        """
         return pulumi.get(self, "generic_config")
 
     @generic_config.setter
@@ -253,10 +266,23 @@ class Profile(pulumi.CustomResource):
 
         A Profile defines network boot and declarative provisioning configurations.
 
+        ```python
+        import pulumi
+
+        config = pulumi.Config()
+        os_stream = config.get("osStream")
+        if os_stream is None:
+            os_stream = "stable"
+        os_version = config.require("osVersion")
+        kernel = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-kernel-x86_64"
+        initrd = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-initramfs.x86_64.img"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of kernel arguments
         :param pulumi.Input[str] container_linux_config: CoreOS Container Linux Config (CLC) (for backwards compatibility)
+        :param pulumi.Input[str] generic_config: Generic configuration
         :param pulumi.Input[Sequence[pulumi.Input[str]]] initrds: List of URLs to init RAM filesystems
         :param pulumi.Input[str] kernel: URL of the kernel image to boot
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
@@ -271,6 +297,18 @@ class Profile(pulumi.CustomResource):
         ## # Profile Resource
 
         A Profile defines network boot and declarative provisioning configurations.
+
+        ```python
+        import pulumi
+
+        config = pulumi.Config()
+        os_stream = config.get("osStream")
+        if os_stream is None:
+            os_stream = "stable"
+        os_version = config.require("osVersion")
+        kernel = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-kernel-x86_64"
+        initrd = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-initramfs.x86_64.img"
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProfileArgs args: The arguments to use to populate this resource's properties.
@@ -336,6 +374,7 @@ class Profile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: List of kernel arguments
         :param pulumi.Input[str] container_linux_config: CoreOS Container Linux Config (CLC) (for backwards compatibility)
+        :param pulumi.Input[str] generic_config: Generic configuration
         :param pulumi.Input[Sequence[pulumi.Input[str]]] initrds: List of URLs to init RAM filesystems
         :param pulumi.Input[str] kernel: URL of the kernel image to boot
         :param pulumi.Input[str] name: Unqiue name for the machine matcher
@@ -372,6 +411,9 @@ class Profile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="genericConfig")
     def generic_config(self) -> pulumi.Output[Optional[str]]:
+        """
+        Generic configuration
+        """
         return pulumi.get(self, "generic_config")
 
     @property
