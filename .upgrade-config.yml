@@ -4,3 +4,4 @@
 upstream-provider-name: terraform-provider-matchbox
 upstream-provider-org: poseidon
 remove-plugins: true
+pr-assign: ringods
