@@ -270,9 +270,11 @@ class Profile(pulumi.CustomResource):
         import pulumi
 
         config = pulumi.Config()
+        # Fedora CoreOS release stream (e.g. testing, stable)
         os_stream = config.get("osStream")
         if os_stream is None:
             os_stream = "stable"
+        # Fedora CoreOS version to PXE and install (e.g. 32.20200715.3.0)
         os_version = config.require("osVersion")
         kernel = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-kernel-x86_64"
         initrd = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-initramfs.x86_64.img"
@@ -302,9 +304,11 @@ class Profile(pulumi.CustomResource):
         import pulumi
 
         config = pulumi.Config()
+        # Fedora CoreOS release stream (e.g. testing, stable)
         os_stream = config.get("osStream")
         if os_stream is None:
             os_stream = "stable"
+        # Fedora CoreOS version to PXE and install (e.g. 32.20200715.3.0)
         os_version = config.require("osVersion")
         kernel = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-kernel-x86_64"
         initrd = f"https://builds.coreos.fedoraproject.org/prod/streams/{os_stream}/builds/{os_version}/x86_64/fedora-coreos-{os_version}-live-initramfs.x86_64.img"

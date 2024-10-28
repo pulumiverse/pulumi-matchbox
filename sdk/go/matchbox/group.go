@@ -29,12 +29,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := matchbox.NewGroup(ctx, "node1", &matchbox.GroupArgs{
-//				Metadata: pulumi.StringMap{
-//					"custom_variable": pulumi.String("machine_specific_value_here"),
-//				},
-//				Profile: pulumi.Any(matchbox_profile.Myprofile.Name),
+//				Name:    pulumi.String("node1"),
+//				Profile: pulumi.Any(myprofile.Name),
 //				Selector: pulumi.StringMap{
 //					"mac": pulumi.String("52:54:00:a1:9c:ae"),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"custom_variable": pulumi.String("machine_specific_value_here"),
 //				},
 //			})
 //			if err != nil {

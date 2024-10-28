@@ -14,12 +14,13 @@ import * as utilities from "./utilities";
  * import * as matchbox from "@pulumiverse/matchbox";
  *
  * const node1 = new matchbox.Group("node1", {
- *     metadata: {
- *         custom_variable: "machine_specific_value_here",
- *     },
- *     profile: matchbox_profile.myprofile.name,
+ *     name: "node1",
+ *     profile: myprofile.name,
  *     selector: {
  *         mac: "52:54:00:a1:9c:ae",
+ *     },
+ *     metadata: {
+ *         custom_variable: "machine_specific_value_here",
  *     },
  * });
  * ```

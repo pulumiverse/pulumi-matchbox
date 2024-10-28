@@ -30,10 +30,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			// Fedora CoreOS release stream (e.g. testing, stable)
 //			osStream := "stable"
 //			if param := cfg.Get("osStream"); param != "" {
 //				osStream = param
 //			}
+//			// Fedora CoreOS version to PXE and install (e.g. 32.20200715.3.0)
 //			osVersion := cfg.Require("osVersion")
 //			_ := fmt.Sprintf("https://builds.coreos.fedoraproject.org/prod/streams/%v/builds/%v/x86_64/fedora-coreos-%v-live-kernel-x86_64", osStream, osVersion, osVersion)
 //			_ := fmt.Sprintf("https://builds.coreos.fedoraproject.org/prod/streams/%v/builds/%v/x86_64/fedora-coreos-%v-live-initramfs.x86_64.img", osStream, osVersion, osVersion)

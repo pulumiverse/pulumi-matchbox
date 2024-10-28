@@ -25,14 +25,15 @@ namespace Pulumiverse.Matchbox
     /// {
     ///     var node1 = new Matchbox.Group("node1", new()
     ///     {
-    ///         Metadata = 
-    ///         {
-    ///             { "custom_variable", "machine_specific_value_here" },
-    ///         },
-    ///         Profile = matchbox_profile.Myprofile.Name,
+    ///         Name = "node1",
+    ///         Profile = myprofile.Name,
     ///         Selector = 
     ///         {
     ///             { "mac", "52:54:00:a1:9c:ae" },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "custom_variable", "machine_specific_value_here" },
     ///         },
     ///     });
     /// 

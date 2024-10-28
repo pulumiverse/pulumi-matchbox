@@ -13,7 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  *
  * const config = new pulumi.Config();
+ * // Fedora CoreOS release stream (e.g. testing, stable)
  * const osStream = config.get("osStream") || "stable";
+ * // Fedora CoreOS version to PXE and install (e.g. 32.20200715.3.0)
  * const osVersion = config.require("osVersion");
  * const kernel = `https://builds.coreos.fedoraproject.org/prod/streams/${osStream}/builds/${osVersion}/x86_64/fedora-coreos-${osVersion}-live-kernel-x86_64`;
  * const initrd = `https://builds.coreos.fedoraproject.org/prod/streams/${osStream}/builds/${osVersion}/x86_64/fedora-coreos-${osVersion}-live-initramfs.x86_64.img`;

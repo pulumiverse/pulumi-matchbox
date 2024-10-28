@@ -23,7 +23,9 @@ namespace Pulumiverse.Matchbox
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // Fedora CoreOS release stream (e.g. testing, stable)
     ///     var osStream = config.Get("osStream") ?? "stable";
+    ///     // Fedora CoreOS version to PXE and install (e.g. 32.20200715.3.0)
     ///     var osVersion = config.Require("osVersion");
     ///     var kernel = $"https://builds.coreos.fedoraproject.org/prod/streams/{osStream}/builds/{osVersion}/x86_64/fedora-coreos-{osVersion}-live-kernel-x86_64";
     /// 
