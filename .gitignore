@@ -27,3 +27,6 @@ __pycache__
 venv
 sdk/python/build
 sdk/python/*.egg-info
+
+# Ignore local build tracking directory
+.make
